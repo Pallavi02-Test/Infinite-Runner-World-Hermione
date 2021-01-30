@@ -21,11 +21,11 @@ var objGroup;
 
 function setup(){
 
-  createCanvas(2000, 2000);
+  createCanvas(displayWidth*3,displayHeight-100);
 
-  image(track, 0, -displayHeight*4, displayWidth*5, displayHeight);
+  //image(track, 0, -displayHeight*4, displayWidth*5, displayHeight);
 
-  player = createSprite (150, 110, 10, 10);
+  player = createSprite (150,400,50,50);
   player.addImage (playerIMG);
   player.scale = 0.05;
 
@@ -47,24 +47,12 @@ function draw(){
 
   background(track);
 
-  var rect1 = createSprite(250, 0, 865, 10);
-  var rect2 = createSprite(250, 180, 865, 7);
+ 
 
   if(gameState === PLAY){
 
   //COLLISION START
-  if(player.isTouching(rect1)){
-    player.velocityX = 0;
-    player.velocityY = 0;
-    player.x = 150;
-    player.y = 110;
-  }
-  if(player.isTouching(rect2)){
-    player.velocityX = 0;
-    player.velocityY = 0;
-    player.x = 150;
-    player.y = 110;
-  }
+  
   //COLLISION END
 
     if (objGroup.isTouching(player)){
@@ -78,6 +66,10 @@ function draw(){
    if (keyWentDown (DOWN_ARROW)){
     player.velocityY = 5;
   }
+  if(keyWentDown("w")){
+    player.x = player.x +50;
+  }
+
 
   }
 
